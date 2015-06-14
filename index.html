@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">
+		.bubbleclass {
+			background-color: white;
+			height: 20px;
+			width: 30px;
+			position: absolute;
+		}
+	</style>
+	<title>What Did You Say?</title>
+	<h1>What Did You Say?</h1>
+</head>
+<body>
+	<div class="image-container">
+		<img id="picture" src="assets/image.jpg">
+	</div>
+<footer></footer>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+		<script src="./dist/jquery.facedetection.js"></script>
+		<script>
+    $('#picture').faceDetection({
+        complete: function (faces) {
+        		faces.forEach (function(face) {
+        		 var bubble = $('<div />', {class: 'bubbleclass'});
+        		 bubble.css({'top': face.offsetY, 'left': face.offsetX});
+        		 $ ('.image-container').append (bubble)
+        		});
+            console.log(faces);
+        }
+    });
+	</script>
+	
+</body>
+</html>
+
+<!-- set min/max width/height for image
+case statement for border violation of bubble
+manual positioning cases for bubble
+bubble placement based on click event of image/centering of image
+size of bubble based on font size/character limit?
+user can choose fonts using google font api
+what happens if library doesn't find an image
+import/export of image/Twitter OAUTH
+group of people-how to limit facial recognition to one person for bubble placement
+text bubble that automatically resizes based on size of text
+when to wrap the text, what is character max per line? -->
